@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Company - SMART Zero Carbone</title>
+    <link rel="stylesheet" href="Styles/general.css">
+    <link rel="stylesheet" href="Styles/search-company.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>SMART Zero Carbone</h1>
+        <nav>
+            <ul>
+                <li><a href="home-page.html">Home</a></li>
+                <li><a href="home-page.html#features">features</a></li>
+                <li><a href="#contact">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="search-section">
+        <h2>Search for Companies to Track</h2>
+        <form id="search-form" class="search-form">
+            <label for="company-name">Enter Company Name:</label>
+            <input type="text" id="company-name" placeholder="Search for a company">
+            <button type="submit" class="cta-button">Search</button>
+        </form>
+
+        <div id="search-results" class="search-results">
+            <!-- Results will be displayed here -->
+        </div>
+        <!-- Display the company data table after search -->
+        <section id="companyDataSection" style="display: none;">
+            <h2>Real-Time Data for <span id="companyDisplayName"></span></h2>
+            <table id="companyDataTable">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Value</th>
+                        <th>Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Real-time data will go here -->
+                </tbody>
+            </table>
+        </section>
+    </section>
+    <section id="contact" class="contact">
+      <h2>Contact Us</h2>
+      <p>Get in touch to learn more about how SMART Zero Carbone can help your business.</p>
+      <a href="mailto:info@smartzerocarbon.com" class="cta-button">Email Us</a>
+  </section>
+
+    <footer>
+        <p>&copy; 2025 SMART Zero Carbone. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const searchForm = document.getElementById('search-form');
+
+    if (searchForm) {
+        searchForm.addEventListener('submit', async function (event) {  // Use async here
+            event.preventDefault();
+
+            const companyName = document.getElementById('company-name').value.trim();
+
+            if (companyName) {
+                const receivedData = await fetchData(companyName); // Await the async function
+
+                if (receivedData) {
+                    displayCompanyData(companyName, receivedData); // Call function with actual data
+                } else {
+                    alert("Company not found.");
+                }
+            } else {
+                alert("Please enter a company name.");
+            }
+        });
+    } else {
+        console.error("Error: search-form not found in the DOM.");
+    }
+});
+
+
+        function displayCompanyData(companyName, data) {
+            
+            const companyData = [{parameter : 'Air Quality', value : data.air_quality, unit : 'Index'},
+                                {parameter : 'Temperature', value : data.temperature, unit : '°C'},
+                                {parameter : 'Humidity', value : data.humidity, unit : '%'}];
+            
+            if (companyData) {
+                document.getElementById('companyDisplayName').textContent = companyName;
+                const tableBody = document.getElementById('companyDataTable').getElementsByTagName('tbody')[0];
+                tableBody.innerHTML = ''; // Clear previous data
+                
+                companyData.forEach(row => {
+                    const newRow = tableBody.insertRow();
+                    newRow.insertCell(0).textContent = row.parameter;
+                    newRow.insertCell(1).textContent = row.value;
+                    newRow.insertCell(2).textContent = row.unit;
+                });
+                
+                document.getElementById('companyDataSection').style.display = 'block';
+            } else {
+                alert('No data available for this company');
+            }
+        }
+        async function fetchData(companyName) {
+        try {
+            const url = `http://localhost:8000/search-company/?name=${companyName}`;
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            const data = await response.json(); // Parse JSON response
+            return data; // Return data to the caller
+        } catch (error) {
+            console.error("Error fetching data:", error);
+            return null; // Return null if there is an error
+        }
+    }
+    async function handleCompanyClick(companyName) {
+        const data = await fetchData(companyName);
+        
+        if (data) {
+            console.log("Company Data:", data); // ✅ This will print the fetched data
+            
+        } else {
+            console.error("No data found for", companyName);
+        }
+    }
+
+
+                
+    </script>
+</body>
+</html>

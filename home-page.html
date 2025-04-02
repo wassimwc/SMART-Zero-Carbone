@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMART Zero Carbon</title>
+    <link rel="stylesheet" href="Styles/general.css">
+    <link rel="stylesheet" href="Styles/popup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>SMART Zero Carbone</h1>
+        <nav>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="search-company.html">Search Company</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Get Started Button -->
+    
+
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <h2>Sign Up</h2>
+            <form>
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    
+    <section class="hero">
+        <h2>Smart Monitoring for a Sustainable Future</h2>
+        <p>SMART Zero Carbone is an IoT-based system that improves workplace conditions and energy efficiency. It monitors humidity, temperature, air quality, energy consumption, and renewable energy production, adjusting automatically through VHAC. Aligned with global sustainability goals like COP27 and COP28, it helps businesses reduce their carbon footprint and operate more efficiently.</p>
+        <a href="#" class="cta-button" onclick="openPopup()" style="color:white;">Get Started</a>
+    </section>
+    
+    <section id="features" class="features">
+        <h2>Key Features</h2>
+        <div class="feature-list">
+            <a href="environmental-monitoring-page.html" class="feature">
+                <h3>Environmental Monitoring</h3>
+                <p>SMART Zero Carbone tracks temperature, humidity, and air quality to ensure a healthy and comfortable workspace.</p>
+                <img src="images/environmental-monitoring.jpg" class="feature-img"/>
+            </a>
+            <a href="energy-monitoring.html" class="feature">
+                <h3>Energy Monitoring</h3>
+                <p>SMART Zero Carbone tracks energy consumption, renewable energy production, and power factor to optimize energy use and promote sustainability.</p>
+                <img src="images/energy-monitoring.jpg" alt="Example" class="feature-img" />
+            </a>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Get in touch to learn more about how SMART Zero Carbone can help your business.</p>
+        <a href="mailto:info@smartzerocarbon.com" class="cta-button">Email Us</a>
+    </section>
+    
+    
+    <footer>
+        <p>&copy; 2025 SMART Zero Carbone. All Rights Reserved.</p>
+    </footer>
+    <script>
+        function openPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+    
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+    
+</body>
+</html>
+

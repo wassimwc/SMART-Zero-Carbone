@@ -1,0 +1,97 @@
+/* Styling for search page */
+.search-section {
+  text-align: center;
+  padding: 50px 20px;
+  background: #f4fdf4;
+}
+
+.search-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.search-form {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.search-form input {
+  padding: 10px;
+  width: 300px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-form button {
+  padding: 10px 20px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background: #218838;
+}
+
+.search-results {
+  margin-top: 20px;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.search-results ul {
+  list-style: none;
+  padding: 0;
+}
+
+.search-results li {
+  padding: 10px;
+  background: #fff;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-results li:hover {
+  background: #f1f1f1;
+}
+#companyDataSection {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+table {
+  width: 60%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #28a745;
+  color: white;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
